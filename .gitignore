@@ -1,0 +1,10 @@
+*.pyc
+
+project/app/distlib/*
+project/bin/*
+project/etc/*
+project/var/*
+
+project/.installed.cfg
+
+!README.txt
