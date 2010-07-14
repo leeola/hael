@@ -9,7 +9,7 @@
     :license: BSD, see LICENSE for more details.
 """
 from tipfy import RequestHandler, Response
-from tipfy.ext.jinja2 import render_response
+from tipfy.ext.genshi import render_response
 
 
 class HelloWorldHandler(RequestHandler):
