@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:py="http://genshi.edgewall.org/"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    py:strip="">
+
+	<head>
+		<meta content="text/html; charset=UTF-8" http-equiv="content-type" py:replace="''"/>
+	</head>
+	
+    <body py:match="body" py:attrs="select('@*')">
+		${content}
+    </body>
+</html>
