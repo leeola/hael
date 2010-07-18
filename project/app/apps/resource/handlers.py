@@ -2,7 +2,10 @@
 '''
 '''
 
-from tipfy import RequestHandler, Response, NotImplemented, NotFound
+from forms import ResourceForm
+
+from tipfy import (RequestHandler, Response, cached_property,
+                   NotImplemented, NotFound)
 from tipfy.ext.genshi import render_response
 
 
@@ -10,21 +13,40 @@ class ResourceHandler(RequestHandler):
     '''The handler for a single resource request.
     '''
     
+    @cached_property
+    def form(self):
+        return ResourceForm(self.request)
+    
     def delete(self):
         '''Delete this resource.'''
         return NotImplemented()
     
-    def get(self):
-        '''Show this resource.'''
-        return NotImplemented()
+    def get(self, **kwargs):
+        '''Show this resource if it exists.
+        If not, display a creation form.'''
+        
+        context = {'form':self.form}
+        
+        return render_response('edit_resource.html', context)
     
-    def post(self):
+    def post(self, **kwargs):
         '''Modify this resource.'''
-        return NotImplemented()
+        
+        if self.form.validate():
+            # Do stuff
+            return NotImplemented()
+        else:
+            return self.get(**kwargs)
     
-    def put(self):
+    def put(self, **kwargs):
         '''Update/Create this resource.'''
         return NotImplemented()
+        
+        if self.form.validate():
+            # Do stuff
+            return NotImplemented()
+        else:
+            return self.get(**kwargs)
 
 
 class ResourcesHandler(RequestHandler):
