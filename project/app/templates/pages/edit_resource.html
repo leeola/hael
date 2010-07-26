@@ -4,14 +4,30 @@
     xmlns:xi="http://www.w3.org/2001/XInclude"
     py:strip="">
 	
-	<xi:include href="layouts/layout.html" />
-	<xi:include href="base.html" />
+	<xi:include href="../layouts/layout.html" />
+	<xi:include href="../base.html" />
 
 	<head>
 		<meta content="text/html; charset=UTF-8" http-equiv="content-type" py:replace="''"/>
 	</head>
 	
-    <body py:match="body" py:attrs="select('@*')">
-		${content}
+    <body>
+		<form method="${method}" action="${action_url}">
+			<div>
+				${form.title}
+			</div>
+			<div>
+				${form.body}
+			</div>
+			<!-- Resource Settings -->
+			<ul>
+				<li>
+					${form.listed}
+				</li>
+				<li>
+					${form.template}
+				</li>
+			</ul>
+		</form>
     </body>
 </html>

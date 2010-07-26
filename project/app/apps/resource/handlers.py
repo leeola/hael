@@ -25,9 +25,19 @@ class ResourceHandler(RequestHandler):
         '''Show this resource if it exists.
         If not, display a creation form.'''
         
-        context = {'form':self.form}
+        # Here we should see if the resource exists or not,
+        # if it does we want to make the method post,
+        # otherwise we create a new resource, so use put.
+        method = 'put'
         
-        return render_response('edit_resource.html', context)
+        context = {
+            'page_name':'Blah',
+            'form':self.form,
+            'method':method,
+            'action_url':'/some_resource',
+        }
+        
+        return render_response('pages/edit_resource.html', **context)
     
     def post(self, **kwargs):
         '''Modify this resource.'''

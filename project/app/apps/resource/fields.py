@@ -8,7 +8,13 @@ from tipfy.ext.wtforms.widgets import Input
 
 
 class HTML5Input(Input):
-    ''''''
+    '''The base for the new HTML5 Inputs.
+    
+    A quick explanation for this is that HTML5 offers some new attributes
+    that are not available by the default wtforms. Normally, any additional
+    parameters given to the input constructor are passed as input attributes,
+    with the exception (to my knowledge) of the new style attributes like
+    "required", and "autofocus", etc.'''
 
     def __init__(self):
         ''''''

@@ -7,7 +7,7 @@
     <head py:match="head" py:attrs="select('@*')">
         <meta content="text/html; charset=UTF-8" http-equiv="content-type" py:replace="''"/>
         <title py:with="page_name = list(select('title/text()'))">
-            hael<py:if test="title">: ${page_name}</py:if>
+            hael<py:if test="page_name">: ${page_name}</py:if>
         </title>
         <meta py:replace="select('*')" />
     </head>
